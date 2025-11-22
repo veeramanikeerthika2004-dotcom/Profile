@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KJ Korean Food — Authentic Korean Eats</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.4/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#d7263d; /* rich red */
+      --accent:#f7f7f7;
+      --card-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    }
+    body{ font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: linear-gradient(180deg,#fff 0%, #fffdfa 100%); color:#111827;}
+    .navbar-brand { font-weight:700; letter-spacing:0.6px; color:var(--brand) !important;}
+    .hero { background: linear-gradient(90deg, rgba(215,38,61,0.06), rgba(255,242,230,0.05)); padding: 5rem 0; }
+    .product-card { border-radius:12px; box-shadow:var(--card-shadow); transition: transform .18s ease, box-shadow .18s ease; overflow:hidden; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(16,24,40,0.08); }
+    .rating { color: #f59e0b; }
+    .star-empty { color:#e6e6e6; }
+    .cart-badge { position:relative; top:-8px; }
+    .cart-drawer { right:0; top:0; bottom:0; width:360px; background:white; box-shadow: -20px 0 40px rgba(2,6,23,0.12); z-index:2000; transform:translateX(110%); transition: transform .28s ease; padding:1rem; overflow:auto; }
+    .cart-drawer.open{ transform:translateX(0); }
+    .footer { background:#0f172a; color:#e6eef8; padding:2rem 0; }
+    .btn-brand { background:var(--brand); color:white; border:0; }
+    @media (max-width:575px){ .cart-drawer{ width:100%; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">KJ Korean Food</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-3">
+          <button id="cartBtn" class="btn btn-outline-secondary position-relative">
+            <i class="bi bi-cart3"></i>
+            <span id="cartCount" class="badge bg-danger rounded-pill cart-badge">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h1 class="display-5 fw-bold">Taste Korea — Delivered by <span style="color:var(--brand)">KJ</span></h1>
+        <p class="lead text-muted mb-4">Authentic Korean street-food classics, premium banchan, and chef-style bowls — order online, delivered fresh.</p>
+        <div>
+          <a href="#services" class="btn btn-brand me-2">Order Now</a>
+          <a href="#about" class="btn btn-outline-dark">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1543353071-087092ec393a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4a6d4f68b4b2a6ad5d363b4e9c3a3bc3" alt="Korean Food" class="img-fluid rounded-4 shadow" style="max-height:360px; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="py-5">
+  <div class="container" data-aos="fade-up">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2>About KJ Korean Food</h2>
+        <p class="text-muted">At KJ Korean Food, we blend traditional Korean recipes with modern flavour profiles. From spicy tteokbokki to savory bulgogi bowls, our ingredients are fresh and sourced with care. We cater to takeout and small events.</p>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Authentic Korean recipes</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Quick delivery & reliable packaging</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Vegetarian & spicy options</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="https://images.unsplash.com/photo-1604908177075-2f5cd1c6b5f6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=2d1b7f8f0d9f1d6a1b8c1eb01e7f3948" alt="About KJ" class="img-fluid rounded-4 shadow">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / PRODUCTS -->
+<section id="services" class="py-5 bg-white">
+  <div class="container" data-aos="fade-up">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>Menu</h3>
+      <div class="d-flex gap-2">
+        <select id="filterCategory" class="form-select form-select-sm">
+          <option value="all">All Categories</option>
+          <option value="bowl">Bowls</option>
+          <option value="street">Street Food</option>
+          <option value="side">Sides</option>
+        </select>
+        <input id="searchInput" class="form-control form-control-sm" placeholder="Search menu..." style="width:200px">
+      </div>
+    </div>
+
+    <div id="productGrid" class="row g-4">
+      <!-- Product item template (javascript will render) -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5" style="background:linear-gradient(180deg,#fff,#fff);">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Contact & Order</h4>
+        <p class="text-muted">Use the contact form for general inquiries or the order form (checkout) to place an order. We'll respond quickly.</p>
+
+        <!-- Web3Forms Contact Form -->
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="mt-3">
+          <!-- Replace access_key with your Web3Forms key if needed -->
+          <input type="hidden" name="access_key" value="bf614fe7-7a6e-4809-b36e-d5c41c6729ad">
+          <input type="hidden" name="subject" value="KJ Website Contact">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-control" rows="4" required></textarea>
+          </div>
+          <div id="contactFeedback" class="mb-2"></div>
+          <button type="submit" class="btn btn-brand">Send Message</button>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <h4>Opening Hours</h4>
+        <ul class="list-unstyled text-muted mb-4">
+          <li>Mon - Fri: 11:00 — 21:00</li>
+          <li>Sat - Sun: 11:30 — 22:00</li>
+        </ul>
+
+        <h4>Location</h4>
+        <p class="text-muted">KJ Korean Food — City center (Replace with your address)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="cart-drawer" aria-hidden="true" role="dialog" aria-label="Cart">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0">Your Order</h5>
+    <button id="closeCart" class="btn btn-sm btn-outline-secondary"><i class="bi bi-x"></i></button>
+  </div>
+  <div id="cartItems" class="mb-3"></div>
+  <div class="border-top pt-3">
+    <div class="d-flex justify-content-between mb-2">
+      <strong>Subtotal</strong>
+      <strong id="cartSubtotal">₹0</strong>
+    </div>
+    <div class="d-flex gap-2">
+      <button id="clearCart" class="btn btn-sm btn-outline-danger flex-grow-1">Clear</button>
+      <button id="checkoutBtn" class="btn btn-brand flex-grow-1">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>KJ Korean Food</h5>
+        <p class="small">Authentic Korean flavours. Fresh ingredients. Exceptional service.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="small mb-0">© <span id="year"></span> KJ Korean Food. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CHECKOUT MODAL (includes Web3Forms order submit) -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <form id="orderForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Replace access_key with your Web3Forms key if desired -->
+        <input type="hidden" name="access_key" value="bf614fe7-7a6e-4809-b36e-d5c41c6729ad">
+        <input type="hidden" name="subject" value="KJ Order">
+        <input type="hidden" name="order_summary" id="order_summary" value="">
+        <div class="modal-header">
+          <h5 class="modal-title">Checkout — Place your order</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="checkoutItems" class="mb-3"></div>
+          <div class="mb-3">
+            <label class="form-label">Full name</label>
+            <input name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone number</label>
+            <input name="phone" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Delivery address</label>
+            <input name="address" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Any notes (spice level, allergies)</label>
+            <textarea name="message" class="form-control" rows="2"></textarea>
+          </div>
+          <div id="orderFeedback"></div>
+        </div>
+        <div class="modal-footer">
+          <div class="me-auto"><strong>Total:</strong> <span id="orderTotal">₹0</span></div>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+          <button type="submit" class="btn btn-brand">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- JS: jQuery, Bootstrap, AOS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true, duration:700 });
+
+  // Simple product dataset (images from Unsplash). Replace images with your Google URLs if desired.
+  const PRODUCTS = [
+    {
+      id: "p1", title:"Bulgogi Beef Bowl", category:"bowl",
+      desc:"Marinated beef, steamed rice, kimchi, scallions.",
+      price:349, rating:4.6,
+      img:"https://images.unsplash.com/photo-1604908177075-2f5cd1c6b5f6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=2d1b7f8f0d9f1d6a1b8c1eb01e7f3948"
+    },
+    {
+      id: "p2", title:"Spicy Tteokbokki", category:"street",
+      desc:"Chewy rice cakes in sweet-spicy gochujang sauce.",
+      price:249, rating:4.4,
+      img:"https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=37f1ad34a4bcd1b5df362a1ef7915f38"
+    },
+    {
+      id: "p3", title:"Kimchi Fried Rice", category:"bowl",
+      desc:"Pan-fried rice with kimchi and fried egg.",
+      price:199, rating:4.3,
+      img:"https://images.unsplash.com/photo-1617191514955-7f8b3c2bf9b4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=dc3e8bb4dfc2d1a7c8af6e2ad6ae2b5b"
+    },
+    {
+      id: "p4", title:"Crispy K-Fried Chicken (Spicy)", category:"street",
+      desc:"Double-fried chicken with spicy glaze.",
+      price:449, rating:4.8,
+      img:"https://images.unsplash.com/photo-1604908176914-3c7e40b97f9b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f02c37efb9b4efb1b0325ef2d2f5d8b"
+    },
+    {
+      id: "p5", title:"Banchan (Side dish combo)", category:"side",
+      desc:"Assorted Korean side dishes for sharing.",
+      price:149, rating:4.2,
+      img:"https://images.unsplash.com/photo-1604908177072-47c045f2b2a0?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a443e9f2b7c9f7d9a9e0b0c4b3f9b21"
+    }
+  ];
+
+  // ---------- Render products ----------
+  function renderProducts(filter = "all", search="") {
+    const grid = $("#productGrid").empty();
+    const q = search.trim().toLowerCase();
+    const items = PRODUCTS.filter(p=>{
+      if(filter !== "all" && p.category !== filter) return false;
+      if(q && !(p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))) return false;
+      return true;
+    });
+    if(items.length===0){
+      grid.append('<div class="col-12"><div class="alert alert-warning">No items match your filter.</div></div>');
+      return;
+    }
+    items.forEach(p=>{
+      const stars = renderStars(p.rating);
+      const col = $(`
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up">
+          <div class="product-card p-3 h-100">
+            <img src="${p.img}" alt="${escapeHtml(p.title)}" class="img-fluid rounded-3 mb-3" style="height:180px; width:100%; object-fit:cover;">
+            <h5 class="mb-1">${escapeHtml(p.title)}</h5>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="small text-muted">${escapeHtml(p.desc)}</div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="rating">${stars} <span class="small text-muted">(${p.rating.toFixed(1)})</span></div>
+              </div>
+              <div class="text-end">
+                <div class="h6 mb-1">₹${p.price}</div>
+                <div class="d-flex gap-2">
+                  <input type="number" min="1" value="1" class="form-control form-control-sm qty-input" style="width:88px;">
+                  <button class="btn btn-sm btn-brand add-to-cart" data-id="${p.id}"><i class="bi bi-cart-plus"></i> Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+      grid.append(col);
+    });
+  }
+
+  function renderStars(rating){
+    const full = Math.floor(rating);
+    const half = (rating - full) >= 0.5;
+    let s = '';
+    for(let i=0;i<full;i++) s += '<i class="bi bi-star-fill"></i>';
+    if(half) s += '<i class="bi bi-star-half"></i>';
+    for(let i = full + (half?1:0); i<5; i++) s += '<i class="bi bi-star star-empty"></i>';
+    return s;
+  }
+
+  function escapeHtml(text){ return $('<div>').text(text).html(); }
+
+  // ---------- Cart ----------
+  const CART_KEY = "kj_cart_v1";
+  function getCart(){ return JSON.parse(localStorage.getItem(CART_KEY) || "[]"); }
+  function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
+  function addToCart(productId, qty){
+    qty = Number(qty) || 1;
+    const p = PRODUCTS.find(x=>x.id===productId);
+    if(!p) return;
+    const cart = getCart();
+    const found = cart.find(i=>i.id===productId);
+    if(found){ found.qty += qty; } else { cart.push({ id:productId, qty }); }
+    saveCart(cart);
+    showToast(`${p.title} added to cart.`);
+  }
+  function clearCart(){ localStorage.removeItem(CART_KEY); updateCartUI(); }
+
+  function updateCartUI(){
+    const cart = getCart();
+    const count = cart.reduce((s,i)=>s+i.qty,0);
+    $("#cartCount").text(count);
+    const container = $("#cartItems").empty();
+    let subtotal = 0;
+    if(cart.length===0){
+      container.append('<div class="text-muted">Your cart is empty.</div>');
+    } else {
+      cart.forEach(item=>{
+        const p = PRODUCTS.find(x=>x.id===item.id);
+        if(!p) return;
+        const line = $('<div class="d-flex align-items-center gap-3 mb-3"></div>');
+        const thumb = $(`<img src="${p.img}" style="width:72px;height:64px;object-fit:cover;border-radius:8px;">`);
+        const info = $(`<div class="flex-grow-1">
+          <div class="fw-semibold">${escapeHtml(p.title)}</div>
+          <div class="small text-muted">₹${p.price} × ${item.qty}</div>
+        </div>`);
+        const controls = $(`
+          <div class="text-end">
+            <div class="d-flex flex-column align-items-end">
+              <div class="mb-1">₹${(p.price*item.qty).toFixed(0)}</div>
+              <div class="d-flex gap-1">
+                <button class="btn btn-sm btn-outline-secondary dec" data-id="${item.id}"><i class="bi bi-dash"></i></button>
+                <button class="btn btn-sm btn-outline-secondary inc" data-id="${item.id}"><i class="bi bi-plus"></i></button>
+                <button class="btn btn-sm btn-outline-danger remove" data-id="${item.id}"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        `);
+        line.append(thumb, info, controls);
+        container.append(line);
+        subtotal += p.price * item.qty;
+      });
+    }
+    $("#cartSubtotal").text("₹" + subtotal.toFixed(0));
+    $("#cartDrawer").attr("aria-hidden", cart.length===0 ? "true" : "false");
+  }
+
+  // ---------- Cart drawer open/close ----------
+  $(function(){
+    renderProducts();
+    updateCartUI();
+    $("#year").text(new Date().getFullYear());
+
+    // Add to cart from product grid
+    $("#productGrid").on("click", ".add-to-cart", function(e){
+      const id = $(this).data("id");
+      const qty = $(this).closest(".product-card").find(".qty-input").val() || 1;
+      addToCart(id, qty);
+    });
+
+    // open cart
+    $("#cartBtn").click(function(){ $("#cartDrawer").addClass("open"); });
+
+    $("#closeCart").click(function(){ $("#cartDrawer").removeClass("open"); });
+
+    // inc/dec/remove buttons in cart
+    $("#cartItems").on("click", ".inc", function(){ changeQty($(this).data("id"), +1); });
+    $("#cartItems").on("click", ".dec", function(){ changeQty($(this).data("id"), -1); });
+    $("#cartItems").on("click", ".remove", function(){ removeItem($(this).data("id")); });
+
+    $("#clearCart").click(function(){ if(confirm("Clear the cart?")){ clearCart(); } });
+
+    // filter/search
+    $("#filterCategory").change(function(){ renderProducts($(this).val(), $("#searchInput").val()); });
+    $("#searchInput").on("input", function(){ renderProducts($("#filterCategory").val(), $(this).val()); });
+
+    // Checkout
+    $("#checkoutBtn").click(function(){
+      const cart = getCart();
+      if(cart.length===0){ alert("Your cart is empty."); return; }
+      renderCheckout();
+      const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+      modal.show();
+    });
+
+    // Contact form AJAX (web3forms)
+    $("#contactForm").submit(function(e){
+      e.preventDefault();
+      const $f = $(this);
+      const data = $f.serialize();
+      $("#contactFeedback").html('<div class="text-muted small">Sending...</div>');
+      $.post($f.attr('action'), data)
+        .done(res => {
+          $("#contactFeedback").html('<div class="alert alert-success small mb-0">Message sent. We will reply soon.</div>');
+          $f[0].reset();
+        })
+        .fail(err => {
+          $("#contactFeedback").html('<div class="alert alert-danger small mb-0">Submission failed — try again.</div>');
+        });
+    });
+
+    // Order form submit via AJAX
+    $("#orderForm").submit(function(e){
+      e.preventDefault();
+      const $f = $(this);
+      const data = $f.serialize();
+      $("#orderFeedback").html('<div class="text-muted small">Placing order...</div>');
+      $.post($f.attr('action'), data)
+        .done(res => {
+          $("#orderFeedback").html('<div class="alert alert-success small mb-0">Order received — we will contact you soon.</div>');
+          clearCart();
+          $f[0].reset();
+          setTimeout(()=>{ const m = bootstrap.Modal.getInstance(document.getElementById('checkoutModal')); if(m) m.hide(); }, 1200);
+        })
+        .fail(err => {
+          $("#orderFeedback").html('<div class="alert alert-danger small mb-0">Order failed to send — please try again or contact us.</div>');
+        });
+    });
+
+    // Add to cart via double-click product image (UX)
+    $("#productGrid").on("dblclick", ".product-card img", function(){
+      const id = $(this).closest(".product-card").find(".add-to-cart").data("id");
+      addToCart(id, 1);
+    });
+
+  });
+
+  function changeQty(id, delta){
+    const cart = getCart();
+    const item = cart.find(x=>x.id===id);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0) {
+      const keep = confirm("Remove this item from cart?");
+      if(keep) { cart.splice(cart.indexOf(item),1); }
+      else { item.qty = 1; }
+    }
+    saveCart(cart);
+  }
+
+  function removeItem(id){
+    let cart = getCart();
+    cart = cart.filter(i=>i.id!==id);
+    saveCart(cart);
+  }
+
+  function showToast(msg){
+    const el = $(`<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999"></div>`);
+    const t = $(`
+      <div class="toast align-items-center text-bg-light border-0 mb-2" role="alert" aria-live="assertive">
+        <div class="d-flex">
+          <div class="toast-body">${escapeHtml(msg)}</div>
+          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    `);
+    el.append(t);
+    $("body").append(el);
+    const bsToast = new bootstrap.Toast(t[0], { delay: 2200 });
+    bsToast.show();
+    setTimeout(()=> el.remove(), 2600);
+  }
+
+  // Render checkout items into modal
+  function renderCheckout(){
+    const cart = getCart();
+    const wrap = $("#checkoutItems").empty();
+    let total = 0;
+    let summary = [];
+    if(cart.length===0) wrap.append('<div class="text-muted">No items.</div>');
+    else {
+      cart.forEach(item=>{
+        const p = PRODUCTS.find(x=>x.id===item.id);
+        if(!p) return;
+        const line = $(`<div class="d-flex justify-content-between small mb-2"><div>${escapeHtml(p.title)} × ${item.qty}</div><div>₹${(p.price*item.qty).toFixed(0)}</div></div>`);
+        wrap.append(line);
+        total += p.price * item.qty;
+        summary.push(`${p.title} x${item.qty} = ₹${p.price*item.qty}`);
+      });
+    }
+    $("#orderTotal").text("₹" + total.toFixed(0));
+    $("#order_summary").val(summary.join("\n"));
+  }
+
+</script>
+</body>
+</html>
